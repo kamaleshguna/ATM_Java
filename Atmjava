@@ -1,0 +1,102 @@
+import java.util.*;
+public class Main 
+{
+	static void CheckBalance(int mini_amount)
+	{
+		System.out.println("Account balance is : "+mini_amount);
+	}
+	static void Exit()
+	{
+		System.out.println("Thank you");
+		System.out.print(0);
+	}
+	static void withdraw(int mini_amount)
+	{
+		Scanner sc = new Scanner(System.in);
+		System.out.println(".....Withdraw Tranaction.....");
+		System.out.println("Enter the Withdraw Amount:");
+		int with = sc.nextInt();
+		if(mini_amount>with)
+		{
+			mini_amount = mini_amount - with;
+			System.out.println("The balabce is :"+mini_amount);
+			System.out.println("Sucessfully withdraw");
+		}
+		else
+		{
+			System.out.println("Amount less than minimum balanace");
+		}
+	}
+	static void Deposit(int mini_amount)
+	{
+		Scanner sc = new Scanner(System.in);
+		System.out.println(".....Deposit Tranaction.....");
+		System.out.println("Enter the Deposit Amount:");
+		int dep = sc.nextInt();
+		int total = dep + mini_amount;
+		System.out.println("The balance is :"+total);
+		System.out.println("Successfully Added Amount your Bank please check your bank");
+	}
+	static void checkAccount(int Account_no,int password,String name)
+	{
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the Account number: ");
+		int Ac = sc.nextInt();
+		System.out.println("Enter the Password: ");
+		int pass = sc.nextInt();
+		
+		if(Account_no == Ac & password == pass)
+		{
+			int mini_amount = 1000;
+			System.out.println("Welcome to Bank "+name);
+			while(true)
+			{
+				System.out.println("Choice the Transaction..");
+				System.out.println("1.Withdraw");
+				System.out.println("2.Deposit");
+				System.out.println("3.Check Balance");
+				System.out.println("4.Exit");
+				int num = sc.nextInt();
+				switch(num)
+				{
+					case 1:
+					{
+						withdraw(mini_amount);
+						break;
+					}
+					case 2:
+					{
+						Deposit(mini_amount);
+						break;
+					}
+					case 3:
+					{
+						CheckBalance(mini_amount);
+						break;
+					}
+					case 4:
+					{
+						Exit();
+						break;
+					}
+				}
+			}
+		}
+		else
+		{
+			System.out.println("Wrong account number OR password please check.......");
+		}
+		
+	}
+	public static void main(String[] args)
+	{
+		System.out.println("......Welcome Banking......");
+		Scanner sc = new Scanner(System.in);
+		int Account_No = 12345;
+		int password = 34543;
+		System.out.println("Enter Your Name:");
+		String name = sc.nextLine();
+		checkAccount(Account_No,password,name);
+	}
+
+}
